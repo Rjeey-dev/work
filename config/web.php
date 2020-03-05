@@ -11,7 +11,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'components' => [
+    'service' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '2q3ng52Zkmrmqy2ObABnSAuiHXS1l_dN',
@@ -43,6 +43,31 @@ $config = [
             ],
         ],
         'db' => $db,
+        'dbSwMaster' => [
+            'class'               => yii\db\Connection::class,
+            'dsn'                 => 'pgsql:host=postgresql-0-4.mango.local;dbname=sw',
+            'username'            => 'weblk7',
+            'password'            => 'h1ace35d',
+            'charset'             => 'utf8',
+            'enableSchemaCache'   => true,
+            'enableQueryCache'    => true,
+            'schemaCacheDuration' => 7200,
+           // 'appName'             => 'WebLk8',
+           // 'testQuery'           => 'SELECT * FROM sw.points LIMIT 1',
+        ],
+        'dbBillingMaster' => [
+            'class'               => yii\db\Connection::class,
+            'dsn'                 => 'pgsql:host=postgresql-2-61.mango.local;dbname=billing',
+            //      'dsn'               => 'pgsql:host=192.168.5.39;port=5444;dbname=billing',
+            'username'            => 'weblk7',
+            'password'            => 'h1ace35d',
+            'charset'             => 'utf8',
+            'enableSchemaCache'   => true,
+            'schemaCacheDuration' => 7200,
+            'enableQueryCache'    => true,
+            //'appName'             => 'WebLk8',
+           // 'testQuery'           => 'SELECT billing_iweb.get_prov_regions()',
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

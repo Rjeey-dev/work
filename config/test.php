@@ -13,7 +13,7 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'language' => 'en-US',
-    'components' => [
+    'service' => [
         'db' => $db,
         'mailer' => [
             'useFileTransport' => true,
