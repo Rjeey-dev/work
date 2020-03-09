@@ -5,7 +5,13 @@
 $this->registerCssFile('/basic/web/css/site.css');
 
 ?>
-
+<div class="users">
+    <?php  foreach ($rows as $row) { ?>
+        <div><?php print $row['aa.finumber_target']?></div>
+        <div><?php print $row['ab.fiproduct_id']?></div>
+        <div><?php print $row['ab.fiactive']?></div>
+    <?php } ?>
+</div>
 <div class="content-wrapper">
     <div class="left-panel">
         <div class="numbers">

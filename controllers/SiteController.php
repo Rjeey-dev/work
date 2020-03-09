@@ -9,34 +9,56 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\service\NumberService;
+use app\service\GroupService;
+use app\service\IntegrationService;
+use app\service\StaffService;
+use app\service\WidgetService;
 
 class SiteController extends Controller
 {
+
+    private $numberService;
+    private $integrationService;
+    private $groupService;
+    private $staffService;
+    private $widgetService;
+
+
+    public function __construct($id, $module, NumberService $NumberService, GroupService  $GroupService, IntegrationService $IntegrationService, StaffService $StaffService, WidgetService $WidgetService, $config = [])
+    {
+        $this->numberService = $NumberService;
+        $this->groupService = $GroupService;
+        $this->integrationService = $IntegrationService;
+        $this->staffService = $StaffService;
+        $this->widgetService = $WidgetService;
+        parent::__construct($id, $module, $config);
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
+    /*public function behaviors()
+     {
+         return [
+             'access' => [
+                 'class' => AccessControl::className(),
+                 'only' => ['login', 'index'],
+                 'rules' => [
+                     [
+                         'allow' => true,
+                         'actions' => ['login'],
+                         'roles' => ['?'],
+                     ],
+                     [
+                         'allow' => true,
+                         'actions' => ['index'],
+                         'roles' => ['@'],
+                     ],
+                 ],
+             ],
+         ];
+     }*/
 
     /**
      * {@inheritdoc}
@@ -53,7 +75,6 @@ class SiteController extends Controller
             ],
         ];
     }
-
     /**
      * Displays homepage.
      *
@@ -61,9 +82,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
-    }
+       try {
+            return $this->render('index', [
+                'rows' => $this->numberService->getNumbers(),
+            ]);
+        } catch (\Throwable $e) {
+            return $this->render('error');
+        }
 
+       // return $this->render('index');
+    }
     /**
      * Login action.
      *
@@ -85,7 +113,6 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
     /**
      * Logout action.
      *
@@ -98,31 +125,4 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }
