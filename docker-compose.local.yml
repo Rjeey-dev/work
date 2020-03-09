@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  mysql:
+    container_name: db
+    build:
+      context: ./mysql
+      args:
+        schema_name: schema_local
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+
+  php:
+    container_name: php
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile.local
+    ports:
+      - 9000:9000
+    volumes:
+      - ./php/app:/var/www/app:cached
+      - ./php/logs/:/var/www/log
+    environment:
+      PHP_IDE_CONFIG: serverName=app
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    ports:
+      - 80:80
+    environment:
+      APP_HOST: local.app
+    volumes:
+      - ./nginx/logs/:/var/log/nginx
+      - ./php/app:/var/www/app:cached

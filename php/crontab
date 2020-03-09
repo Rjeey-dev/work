@@ -1,0 +1,2 @@
+0 * * * * php /var/www/app/bin/console routes:route_pending_dates_start
+0 */2 * * * php /var/www/app/bin/console routes:route_active_dates_complete
