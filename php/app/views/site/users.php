@@ -6,5 +6,5 @@
     <?php } ?>
 </div>
 <div class="users2">
-    <div><?php print $rows2;?></div>
+    <div><?php print $count;?></div>
 </div>

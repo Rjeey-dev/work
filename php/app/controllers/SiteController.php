@@ -17,13 +17,11 @@ use app\service\WidgetService;
 
 class SiteController extends Controller
 {
-
     private $numberService;
     private $integrationService;
     private $groupService;
     private $staffService;
     private $widgetService;
-
 
     public function __construct($id, $module, NumberService $NumberService, GroupService  $GroupService, IntegrationService $IntegrationService, StaffService $StaffService, WidgetService $WidgetService, $config = [])
     {
@@ -74,6 +72,7 @@ class SiteController extends Controller
             ],
         ];
     }
+
     /**
      * Displays homepage.
      *
@@ -83,8 +82,10 @@ class SiteController extends Controller
     {
         try {
             return $this->render('index', [
-                'rows' => $this->integrationService->getUsers('300012869'),
-                'rows2' => $this->integrationService->getUser2('300012869'),
+                'phoneNumbersData' => $this->numberService->getNumbers('300012869', 0, 3),
+                'phoneNumbersCount' => $this->numberService->getCountNumbers('300012869'),
+                'staff' => $this->staffService->getStaff(),
+                'staffCount' => $this->staffService->getStaffCount(),
             ]);
         } catch (\Throwable $e) {
             return $this->render('error', ['error' => $e->getMessage()]);
