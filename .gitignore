@@ -35,5 +35,5 @@ tests/_support/_generated
 php/app/vendor
 mysql/data
 
-php/logs
+./php/logs
 nginx/logs
