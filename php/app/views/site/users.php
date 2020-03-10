@@ -6,9 +6,5 @@
     <?php } ?>
 </div>
 <div class="users2">
-    <?php foreach ($rows2 as $row) { ?>
-        <div><?php print $row['schema_id']?></div>
-        <div><?php print $row['profile_id']?></div>
-        <div><?php print $row['schema_name']?></div>
-    <?php } ?>
+    <div><?php print $rows2;?></div>
 </div>

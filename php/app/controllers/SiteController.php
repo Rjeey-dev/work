@@ -82,7 +82,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         try {
-            return $this->render('users', [
+            return $this->render('index', [
                 'rows' => $this->integrationService->getUsers('300012869'),
                 'rows2' => $this->integrationService->getUser2('300012869'),
             ]);
