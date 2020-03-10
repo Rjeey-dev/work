@@ -1,0 +1,123 @@
+body{
+    background-image:url(/basic/web/img/background28.jpg);
+}
+.forms{
+    padding-top: 300px ;
+    display: flex;
+    align-items: center;
+    justify-content:left ;
+    width: 67%;
+    padding-left: 750px;
+
+}
+.login-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#2F4F4F ;
+
+}
+.left-form{
+    width:43% ;
+
+}
+.left-form a:hover{
+    color: white;
+    text-decoration:none;
+
+}
+.left-form a:focus{
+    color: white;
+    text-decoration:none;
+
+}
+.mango_png{
+    width:30px;
+    height: 30px;
+
+}
+.logo{
+
+    padding-left: 10px;
+}
+.mango{
+    color: white;
+    text-decoration:none;
+    font-weight:600 ;
+
+}
+.text{
+    padding:20px ;
+    color:#848484;
+}
+.create-password{
+    color: white;
+    text-decoration: none;!important;
+}
+.text a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.right-form{
+    background-color: white;
+    margin-left:20px ;
+    width: 71%;
+    height: 325px;
+
+}
+.right-form-wrapper{
+    padding-left:25px ;
+
+}
+.right-form-wrapper p{
+    padding-top:25px ;
+    color: black;
+    font-weight:600 ;
+    font-size:20px ;
+}
+.input-login{
+    padding-top: 15px;
+}
+.pole-login{
+    width: 85%;
+}
+.pole-password{
+    width: 85%;
+}
+.button{
+    height:25px ;
+    border-width:0;
+    border-radius:4px;
+    background: #32CD32;
+    width: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight:600 ;
+    color: white;
+    border-color:#32CD32;
+}
+.submit-button{
+    align-items: center;
+    padding-top:12px ;
+}
+.submit-button a {
+    margin-top: -22px  ;
+    margin-left:17% ;
+    color: #337ab7;
+}
+.submit-button a:hover{
+    color: #337ab7;
+    text-decoration: none;
+}
+.submit-button a:focus{
+    color: #337ab7;
+    text-decoration: none;
+}
+.pass{
+    display: flex;
+    align-items: center;
+    justify-content:right;
+
+}
