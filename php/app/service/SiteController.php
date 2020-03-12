@@ -88,7 +88,6 @@ class SiteController extends Controller
                 'staffCount' => $this->staffService->getStaffCount(),
                 'group' => $this->groupService->getGroup(10000352),
                 'groupCount' => $this->groupService->getGroupCount(10000352),
-                'algorithms' => $this->groupService->getGroupAlgorithms(),
             ]);
         } catch (\Throwable $e) {
             return $this->render('error', ['error' => $e->getMessage()]);

@@ -7,8 +7,8 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->registerCssFile('/css/login.css');
-$this->registerCssFile('/assets/e7976eb/css/bootstrap.css');
+$this->registerCssFile('/basic/php/app/web/css/login.css');
+$this->registerCssFile('/basic/php/web/assets/e7976eb/css/bootstrap.css');
 
 ?>
 
@@ -16,7 +16,7 @@ $this->registerCssFile('/assets/e7976eb/css/bootstrap.css');
     <div class="login-form">
         <div class="left-form">
             <div class="logo">
-                <a  href="#"> <img class="mango_png" src="/img/logo.png"></a>
+                <a  href="#"> <img class="mango_png" src="/basic/php/app/web/img/logo.png"></a>
                 <a  class="mango" href="#">MANGO OFFICE</a>
             </div>
             <p class="text">Добро пожаловать в личный кабинет

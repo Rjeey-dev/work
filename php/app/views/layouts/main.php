@@ -35,7 +35,7 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/site/index"><img class="mango_png" src="/img/logo.png"></a>
+                <a class="navbar-brand" href="/site/index"><img class="mango_png" src="/basic/php/app/web/img/logo.png"></a>
                 <a class="navbar-brand" href="/site/index">MANGO_OFFICE</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

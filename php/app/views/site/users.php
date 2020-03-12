@@ -6,6 +6,7 @@
     <?php } ?>
 </div>
 <div class="users2">
-        <div><?php  echo ['product_id'];?></div>
 
+        <div><?php  echo ['product_id'];?></div>
+    <div><?php print $count;?></div>
 </div>

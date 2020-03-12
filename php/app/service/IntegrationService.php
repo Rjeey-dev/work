@@ -5,5 +5,4 @@ namespace app\service;
 class IntegrationService
 {
 
-
 }

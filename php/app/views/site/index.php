@@ -6,28 +6,29 @@ $this->registerCssFile('/basic/web/css/site.css');
 
 ?>
 <div class="users">
-    <?php  foreach ($rows as $row) { ?>
-        <div><?php print $row['aa.finumber_target']?></div>
-        <div><?php print $row['ab.fiproduct_id']?></div>
-        <div><?php print $row['ab.fiactive']?></div>
-    <?php } ?>
+
 </div>
 <div class="content-wrapper">
     <div class="left-panel">
         <div class="numbers">
             <div class="our_numbers">
                 <a class="numbers_our-numbers" href="#">Ваши номера</a>
-                <p class="numbers_numbers-mango">Номера MANGO OFFICE</p>
-                <p>7(495)660-83-15</p>
-                <p>7(495)660-83-15</p>
-                <p>7(495)660-83-15</p>
+                <p class="numbers_numbers-mango">
+                    Номера MANGO OFFICE
+                    <?php if ($phoneNumbersCount > 0) {?>
+                        (<?php print $phoneNumbersCount;?>)
+                    <?php } ?>
+                </p>
+                <?php foreach ($phoneNumbersData as $data) { ?>
+                    <p><?php print $data['number']?></p>
+                <?php } ?>
             </div>
             <div class="buy">
                 <a class="buy-button" href="#">Купить</a>
                 <div class="buy-wrapper"
-                <p>Схема <a href="#">Копия al2(1)</a></p>
-                <p>Схема <a href="#">Александр Кончиц</a></p>
-                <p>Схема <a href="#">dsh1-на sip,hard-2</a></p>
+                    <?php foreach ($phoneNumbersData as $data) { ?>
+                        <p>Схема <a href="<?php print \yii\helpers\Url::toRoute(['schema/view', 'id' => $data['schema_id']]);?>"><?php print $data['schema_name']?></a></p>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -66,33 +67,44 @@ $this->registerCssFile('/basic/web/css/site.css');
         <div class="numbers">
             <div class="our_numbers">
                 <a class="numbers_our-numbers" href="#">Ваш персонал</a>
-                <p class="numbers_numbers-mango">Сотрудники</p>
-                <a><p>Pavel K</p></a>
-                <a><p>qqqqq</p></a>
-                <a><p>Андрей Гавриленко</p></a>
+                <p class="numbers_numbers-mango">
+                    Сотрудники
+                    <?php if ($staffCount > 0) {?>
+                        (<?php print $staffCount;?>)
+                    <?php } ?>
+                </p>
+                <?php foreach ($staff as $user) { ?>
+                    <a href="<?php print \yii\helpers\Url::toRoute(['profile/view', 'id' => $user['id']]);?>"><p><?php print $user['name']?></p></a>
+                <?php } ?>
             </div>
             <div class="buy">
                 <p>внутренний номер</p>
                 <div class="buy-wrapper">
-                    <p>236</p>
-                    <p>3333</p>
-                    <p>235</p>
+                    <?php foreach ($staff as $user) { ?>
+                        <p><?php print $user['number']?></p>
+                    <?php } ?>
                 </div>
             </div>
         </div>
         <div class="numbers-buy">
             <div class="num-buy">
-                <p class="numbers-buy_number_our_operator title">Группы</p>
-                <a class="item" href="#">Новая группа</a>
-                <a class="item" href="#">ГруппаПро</a>
-                <a class="item" href="#">!!!!ARMANDELA</a>
+                <p class="numbers-buy_number_our_operator title">
+                    Группы
+                    <?php if ($groupCount > 0) {?>
+                        (<?php print $groupCount;?>)
+                    <?php } ?>
+                    </p>
+                <?php foreach ($group as $data) { ?>
+                    <p><?php print $data['fsname']?>
+                        </p>
+                <?php } ?>
             </div>
             <div class="connect">
                 <a class="title" href="#">распределение звонков</a>
                 <div class="con-wrapper">
-                    <p class="item">"Последовательный"</p>
-                    <p class="item">"Одновременно всем"</p>
-                    <p class="item">"Последовательный"</p>
+                    <p><?php  echo \Yii::t('app', 'ЧукГек');?>
+                    </p>
+
                 </div>
             </div>
         </div>
