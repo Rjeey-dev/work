@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -42,6 +43,32 @@ $config = [
                 ],
             ],
         ],
+       /* 'i18n'          => [
+            'translations' => [
+                'app*'  => [
+                    'class'          => \yii\i18n\PhpMessageSource::class,
+                    //'basePath' => '@app/messages',
+                    'sourceLanguage' => 'xx-XX',
+                    'fileMap'        => [
+                        'app' => 'app.php',
+                    ],
+                ],
+
+            ],
+        ],*/
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                   // 'basePath' => '@app/messages',
+                    'sourceLanguage' => 'xx-XX',
+                    'fileMap' => [
+                        'app'  => 'app.php',
+                    ],
+                ],
+            ],
+        ],
+
         'db' => $db,
         'dbSwMaster' => [
             'class'               => yii\db\Connection::class,

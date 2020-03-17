@@ -23,7 +23,7 @@ class SiteController extends Controller
     private $staffService;
     private $widgetService;
 
-    public function __construct($id, $module, NumberService $NumberService, GroupService  $GroupService, IntegrationService $IntegrationService, StaffService $StaffService, WidgetService $WidgetService, $config = [])
+    public function __construct($id, $module, NumberService $NumberService, GroupService $GroupService, IntegrationService $IntegrationService, StaffService $StaffService, WidgetService $WidgetService, $config = [])
     {
         $this->numberService = $NumberService;
         $this->groupService = $GroupService;
@@ -57,6 +57,7 @@ class SiteController extends Controller
             ],*/
         ];
     }
+
     /**
      * {@inheritdoc}
      */
@@ -81,19 +82,28 @@ class SiteController extends Controller
     public function actionIndex()
     {
         try {
+
             return $this->render('index', [
                 'phoneNumbersData' => $this->numberService->getNumbers('300012869', 3, 0),
                 'phoneNumbersCount' => $this->numberService->getCountNumbers('300012869'),
-                'staff' => $this->staffService->getStaff(),
-                'staffCount' => $this->staffService->getStaffCount(),
+                'staff' => $this->staffService->getStaff(10000010, 1),
+                'staffCount' => $this->staffService->getStaffCount(10000023),
                 'group' => $this->groupService->getGroup(10000352),
                 'groupCount' => $this->groupService->getGroupCount(10000352),
-                'algorithms' => $this->groupService->getGroupAlgorithms(),
+                'widget' => $this->widgetService->getWidgets(300013770, 1),
+                'widgetCount' => $this->widgetService->getWidgetsCount(300013770,1),
+                'integration' => $this->integrationService->getIntegration(300013770),
+                'integrationCount' => $this->integrationService->getIntegrationCount(300013770),
+
+
             ]);
         } catch (\Throwable $e) {
             return $this->render('error', ['error' => $e->getMessage()]);
+
         }
+
     }
+
     /**
      * Login action.
      *
@@ -115,6 +125,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
     /**
      * Logout action.
      *

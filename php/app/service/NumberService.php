@@ -20,11 +20,12 @@ class NumberService
             AND c.fipoint_fwd_schema_id IS NOT NULL
             AND f.fishow_at_web <> 2
             LIMIT :limit OFFSET :offset",
-            [':product_id' => $productId,':limit' => $limit,':offset' => $offset]
+            [':product_id' => $productId, ':limit' => $limit, ':offset' => $offset]
         );
         return $connection->queryAll();
 
     }
+
     public function getCountNumbers(string $productId): int
     {
         $connection = \Yii::$app->dbSwMaster->createCommand("

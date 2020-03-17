@@ -1,10 +1,12 @@
 
 <?php
-var_dump(111);
+
+
  return [
     'ЦОВ' => 'serial_by_priority',
-     'WA' => 'random',
+    'WA' => 'random',
     'Новая группа1' => 'most_idle',
     'ВАТС' => 'answ_calls',
     'ЧукГек' => 'talk_time'
 ];
+

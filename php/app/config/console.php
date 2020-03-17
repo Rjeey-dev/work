@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => 'en-US',
+
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -26,19 +26,7 @@ $config = [
                 ],
             ],
         ],
-        'i18n' => [
-            'translations' => [
-                'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/messages',
-                    'sourceLanguage' => 'en-US',
-                    'fileMap' => [
-                        'app'  => 'app.php',
-                        'app/error' => 'error.php',
-                    ],
-                ],
-            ],
-        ],
+
 
         'db' => $db,
     ],
